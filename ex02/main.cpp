@@ -12,15 +12,15 @@ int main()
     std::srand(std::time(NULL));
 
     // Generate a random Base pointer (A, B, or C)
-    Base* p = Base::generate();
-    Base* a = Base::generate();
-    Base* r = Base::generate();
+    Base* p = generate();
+    Base* a = generate();
+    Base* r = generate();
     // Identify using pointer
-    Base::identify(p);
-    Base::identify(a);
-    Base::identify(r);
+    identify(p);
+    identify(a);
+    identify(r);
     // Identify using reference
-    Base::identify(*p);
+    identify(*p);
 
     // Clean up
     delete p;

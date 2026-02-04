@@ -3,7 +3,7 @@
 #include "B.hpp"
 #include "C.hpp"
 
-Base* Base::generate(void)
+Base* generate(void)
 {
     int gen;
 
@@ -20,7 +20,7 @@ Base* Base::generate(void)
     return (NULL);
 }
 
-void Base::identify(Base& p)
+void identify(Base& p)
 {
     try {
         A& a= dynamic_cast<A&>(p);
@@ -44,7 +44,7 @@ void Base::identify(Base& p)
     catch(std::exception& e) {}
 }
 
-void Base::identify(Base* p)
+void identify(Base* p)
 {
     A* a= dynamic_cast<A*>(p);
     B* b= dynamic_cast<B*>(p);
