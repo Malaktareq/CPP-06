@@ -72,9 +72,17 @@ bool input_handling(t_type &type, const std::string conv)
 
 void int_cast(std::string conv)
 {
-    int num;
+    long num;
 
-    num = atoi(conv.c_str());
+    num = atol(conv.c_str());
+    if (std::numeric_limits<int>::max() < num  || num < std::numeric_limits<int>::min())
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: " << "impossible" << std::endl;
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: " << "impossible" << std::endl;
+        return ;
+    }
     if (num < 31 || num > 127)
         std::cout << "char: Non displayable" << std::endl;
     else
@@ -95,18 +103,29 @@ void char_cast(std::string conv)
     else
         std::cout << "char: '" << static_cast<char>(conv[0]) << "\'" << std::endl;
     std::cout << "int: " << static_cast<int>(conv[0]) << std::endl;
-    std::cout << "float: " <<   std::fixed << std::setprecision(1)
+    std::cout << "float: " <<   std::fixed  << std::setprecision(1)
                 << static_cast<float>(conv[0]) << "f" << std::endl;
     std::cout << "double: " << static_cast<double>(conv[0]) << std::endl;
 }
 void float_cast(std::string conv)
 {
-    float num = strtod(conv.c_str(), NULL);
-    if (num < 31 || num> 127)
+    double num = strtod(conv.c_str(), NULL);
+    if (num != 0 && (std::numeric_limits<float>::min() > num  || std::numeric_limits<float>::max() < num))
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: " << "impossible" << std::endl;
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: " << "impossible" << std::endl;
+        return ;
+    }
+    if (num < 31 || num > 127)
         std::cout << "char: Non displayable" << std::endl;
     else
         std::cout << "char: '" << static_cast<char>(num) << "\'" << std::endl;
-    std::cout << "int: " << static_cast<int>(num) << std::endl;
+    if (std::numeric_limits<int>::min() > num  || std::numeric_limits<int>::max() < num)
+        std::cout << "int: " << "impossible" << std::endl; 
+    else
+        std::cout << "int: " << static_cast<int>(num) << std::endl;
      std::cout << "float: " <<   std::fixed << std::setprecision(1)
                 << num << "f" << std::endl;
     std::cout << "double: " << static_cast<double>(num) << std::endl;
@@ -115,12 +134,21 @@ void float_cast(std::string conv)
 void double_cast(std::string conv)
 {
     double value = strtod(conv.c_str(), NULL);
-     if (value < 31 || value > 127)
+    if (value > 127)
+        std::cout << "char: impossible" << std::endl;
+    else if (value < 31 )
         std::cout << "char: Non displayable" << std::endl;
     else
         std::cout << "char: '" << static_cast<char>(value) << "\'" << std::endl;
-    std::cout << "int: " << static_cast<int>(value) << std::endl;
-    std::cout << "float: " <<   std::fixed << std::setprecision(1)
+    if (std::numeric_limits<int>::min() > value  || std::numeric_limits<int>::max() < value)
+        std::cout << "int: " << "impossible" << std::endl; 
+    else
+        std::cout << "int: " << static_cast<int>(value) << std::endl;
+
+    if (value != 0 && (std::numeric_limits<float>::min() > value  || std::numeric_limits<float>::max() < value))
+        std::cout << "float: impossible" << std::endl;
+    else
+        std::cout << "float: " <<   std::fixed
                 << static_cast<float>(value) << "f" << std::endl;
     std::cout << "double: " << value << std::endl;
 }

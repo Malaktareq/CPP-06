@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <iomanip>
 #include <cmath>
+#include <limits>
+#include <cerrno>
 class ScalarConverter
 {
     public:

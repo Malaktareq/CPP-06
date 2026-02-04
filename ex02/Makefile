@@ -1,7 +1,7 @@
 NAME = pointer_casting
 CXX = c++ 
 CXXFLAGS =  -Wall -Werror -Wextra -std=c++98
-SRCS = main.cpp Serializer.cpp
+SRCS = main.cpp Base.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)

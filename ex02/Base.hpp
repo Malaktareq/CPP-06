@@ -1,16 +1,14 @@
 #ifndef BASE_HPP
 #define BASE_HPP
 #include <cstdlib>
-typedef enum e_type{
-    A,
-    B,
-    C
-}t_type;
-
+#include <iostream>
+#include <cstring>
 class Base {
-    Base * generate(void);
-    void identify(Base* p);
-    void identify(Base& p);
+    public:
+        static Base* generate(void);
+        static void identify(Base* p);
+        static void identify(Base& p);
+        virtual ~Base();
 };
 
 #endif
