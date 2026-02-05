@@ -121,7 +121,7 @@ void float_cast(std::string conv)
     else
         std::cout << "int: " << static_cast<int>(num) << std::endl;
 
-    if (num != 0 && (std::numeric_limits<float>::min() > num  || std::numeric_limits<float>::max() < num))
+    if (num >= 0 && (std::numeric_limits<float>::min() > num  || std::numeric_limits<float>::max() < num))
         std::cout << "float: impossible" << std::endl;
     else
         std::cout << "float: " <<   std::fixed
@@ -143,7 +143,7 @@ void double_cast(std::string conv)
     else
         std::cout << "int: " << static_cast<int>(value) << std::endl;
 
-    if (value != 0 && (std::numeric_limits<float>::min() > value  || std::numeric_limits<float>::max() < value))
+    if (value >= 0 && (std::numeric_limits<float>::min() > value  || std::numeric_limits<float>::max() < value))
         std::cout << "float: impossible" << std::endl;
     else
         std::cout << "float: " <<   std::fixed
